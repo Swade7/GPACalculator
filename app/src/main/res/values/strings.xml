@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">GPACalculator</string>
+    <string name="calculator_instructions">Enter the number of grades for each letter grade to calculate your GPA</string>
+    <string name="gpa_calculator_title">GPA Calculator</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="f">F</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="calculate">Calculate</string>
 </resources>

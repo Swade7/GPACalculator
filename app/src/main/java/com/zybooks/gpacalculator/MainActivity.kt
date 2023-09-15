@@ -8,20 +8,20 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var numAsEditText: EditText
-    private lateinit var numBsEditText: EditText
-    private lateinit var numCsEditText: EditText
-    private lateinit var numDsEditText: EditText
-    private lateinit var numFsEditText: EditText
+    private var gradeOneGrade: EditText? = null
+    private var gradeTwoGrade: EditText? = null
+    private var gradeThreeGrade: EditText? = null
+    private var gradeFourGrade: EditText? = null
+    private var gradeFiveGrade: EditText? = null
     private lateinit var GPA: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        numAsEditText = findViewById(R.id.AInput)
-        numBsEditText = findViewById(R.id.BInput)
-        numCsEditText = findViewById(R.id.CInput)
-        numDsEditText = findViewById(R.id.DInput)
-        numFsEditText = findViewById(R.id.FInput)
+        gradeOneEditText = findViewById(R.id.grade_one_grade)
+        numBsEditText = findViewById(R.id.grade_two_grade)
+        numCsEditText = findViewById(R.id.grade_three_grade)
+        numDsEditText = findViewById(R.id.grade_four_grade)
+        numFsEditText = findViewById(R.id.grade_five_grade)
     }
 
     fun calculateGPA(view: View) {

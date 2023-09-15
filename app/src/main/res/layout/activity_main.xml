@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ABCEEA"
-    tools:context=".MainActivity">
-    -->
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -16,19 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="ABCEEA"
     tools:context="com.zybooks.gpacalculator.MainActivity">
 
     <TextView
         android:id="@+id/GPACalculatorTitle"
         android:layout_width="279dp"
         android:layout_height="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="31dp"
-        android:layout_marginEnd="65dp"
+        android:layout_marginEnd="64dp"
         android:text="@string/gpa_calculator_title"
         android:textAlignment="center"
         android:textSize="34sp"
@@ -38,210 +26,238 @@
         android:id="@+id/CalculatorInstructionsText"
         android:layout_width="281dp"
         android:layout_height="77dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="50dp"
         android:text="@string/calculator_instructions"
         android:textAlignment="center"
         android:textSize="18sp" />
 
     <LinearLayout
-        android:id="@+id/row_1"
-        android:layout_width="match_parent"
+        android:id="@+id/grade_and_hours_headers"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="0dp"
+        android:layout_marginBottom="5dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
         <TextView
-            android:id="@+id/ATitle"
+            android:id="@+id/grade_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="175dp"
-            android:layout_marginBottom="0dp"
-            android:text="@string/a"
+            android:text="@string/grade"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/BTitle"
-            android:layout_width="14dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="125dp"
-            android:layout_marginBottom="0dp"
-            android:text="@string/b"
+            android:layout_marginStart="35dp"
+            android:text="@string/hours"
             android:textSize="20sp"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row_2"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:background="ABCEEA"
+        android:id="@+id/grade_one_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="5dp"
+        android:layout_marginStart="85dp"
+        android:paddingBottom="10dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
+        <TextView
+            android:id="@+id/grade_one_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/one"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/AInput"
-            android:layout_width="133dp"
+            android:id="@+id/grade_one_grade"
+            android:layout_width="71dp"
             android:layout_height="38dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="35dp"
-            android:ems="10"
-            android:inputType="number" />
+            android:inputType="text"
+            android:maxLength="1" /> <!--https://developer.android.com/reference/android/widget/TextView#attr_android:inputType -->
 
         <EditText
-            android:id="@+id/BInput"
-            android:layout_width="133dp"
+            android:id="@+id/grade_one_hours"
+            android:layout_width="71dp"
             android:layout_height="38dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="65dp"
+            android:layout_marginStart="20dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="1" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row_3"
-        android:layout_width="match_parent"
+        android:id="@+id/grade_two_row"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="0dp"
+        android:layout_marginStart="85dp"
+        android:paddingBottom="10dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
         <TextView
-            android:id="@+id/CTitle"
+            android:id="@+id/grade_two_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="175dp"
-            android:layout_marginBottom="0dp"
-            android:text="@string/c"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/two"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/DTitle"
-            android:layout_width="14dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="125dp"
-            android:layout_marginBottom="0dp"
-            android:text="@string/d"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/row_4"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="5dp"
-        tools:context="com.zybooks.gpacalculator.MainActivity">
-
 
         <EditText
-            android:id="@+id/CInput"
-            android:layout_width="133dp"
+            android:id="@+id/grade_two_grade"
+            android:layout_width="71dp"
             android:layout_height="38dp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="35dp"
-            android:ems="10"
-            android:inputType="number" />
+            android:inputType="text"
+            android:maxLength="1" /> <!--https://developer.android.com/reference/android/widget/TextView#attr_android:inputType -->
 
         <EditText
-            android:id="@+id/DInput"
-            android:layout_width="133dp"
+            android:id="@+id/grade_two_hours"
+            android:layout_width="71dp"
             android:layout_height="38dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="65dp"
+            android:layout_marginStart="20dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="1" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row_5"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:id="@+id/grade_three_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="0dp"
+        android:layout_marginStart="85dp"
+        android:paddingBottom="10dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
         <TextView
-            android:id="@+id/FTitle"
+            android:id="@+id/grade_three_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="165dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="175dp"
-            android:layout_marginBottom="0dp"
-            android:text="@string/f"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/three"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/grade_three_grade"
+            android:layout_width="71dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="5dp"
+            android:inputType="text"
+            android:maxLength="1" /> <!--https://developer.android.com/reference/android/widget/TextView#attr_android:inputType -->
+
+        <EditText
+            android:id="@+id/grade_three_hours"
+            android:layout_width="71dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row_6"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:id="@+id/grade_four_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="0dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="0dp"
+        android:layout_marginStart="85dp"
+        android:paddingBottom="10dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
+        <TextView
+            android:id="@+id/grade_four_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/four"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/FInput"
-            android:layout_width="133dp"
+            android:id="@+id/grade_four_grade"
+            android:layout_width="71dp"
             android:layout_height="38dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="5dp"
+            android:inputType="text"
+            android:maxLength="1" /> <!--https://developer.android.com/reference/android/widget/TextView#attr_android:inputType -->
+
+        <EditText
+            android:id="@+id/grade_four_hours"
+            android:layout_width="71dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="0dp"
-            android:layout_marginBottom="35dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grade_five_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="85dp"
+        android:paddingBottom="10dp"
+        tools:context="com.zybooks.gpacalculator.MainActivity">
+
+        <TextView
+            android:id="@+id/grade_five_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/five"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/grade_five_grade"
+            android:layout_width="71dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="5dp"
+            android:inputType="text"
+            android:maxLength="1" /> <!--https://developer.android.com/reference/android/widget/TextView#attr_android:inputType -->
+
+        <EditText
+            android:id="@+id/grade_five_hours"
+            android:layout_width="71dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingTop="0dp"
-        android:paddingRight="16dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
         android:paddingBottom="0dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
@@ -257,28 +273,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingTop="0dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="0dp"
+        android:layout_marginStart="5dp"
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
         <TextView
             android:id="@+id/GPAResult"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="175dp"
-            android:layout_marginBottom="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:text="0"
             android:textAlignment="center"
             android:textSize="32sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-
-
-
 </LinearLayout>
-<!--</androidx.constraintlayout.widget.ConstraintLayout> -->

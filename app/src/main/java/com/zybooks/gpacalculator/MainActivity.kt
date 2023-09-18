@@ -42,30 +42,24 @@ class MainActivity : AppCompatActivity() {
 
         // GPA
         GPATextView = findViewById(R.id.GPAResult)
-
     }
 
-    // Helper function to check if the grade is a valid grade
-    private fun checkValidGrade(grade: String): Int {
-        val upperGrade = grade.uppercase()
-
-        if (upperGrade == "A" || upperGrade == "B" || upperGrade == "C"
-            || upperGrade == "D" || upperGrade == "F") {
-            return 1
-        }
-        else if(grade == "") {
-                return 0
-        }
-        else {
-            return -1
+    // Class to store the grades in
+    class Grade(val letterGrade: String, val hours: Int) {
+        fun checkValidGrade(): Int
+        {
+            return when (letterGrade.uppercase()) {
+                "A", "B", "C", "D", "F" -> 1
+                "" -> 0
+                else -> -1
+            }
         }
     }
 
     // Helper function to convert a grade to an integer
     private fun gradeToInt(grade: String): Int
     {
-        val upperGrade = grade.uppercase()
-        val intGrade = when (upperGrade) {
+        val intGrade = when (grade.uppercase()) {
             "A" -> 4
             "B" -> 3
             "C" -> 2
@@ -76,46 +70,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Helper function to sum the total credit hours
-    private fun sumCreditHours(grade: String, hours: Int): Int {
-        if (checkValidGrade(grade) == 1) {
-                 return hours
-            }
-        else {
-            return 0
+    private fun sumCreditHours(grade: Grade): Int {
+        return if (grade.checkValidGrade() == 1) {
+            grade.hours
+        } else {
+            0
         }
 
     }
 
     // Helper function to sum the values of the grades
-    private fun sumGradeValues(grade: String, hours: Int): Int {
+    private fun sumGradeValues(grade: Grade): Int {
 
-        if (checkValidGrade(grade) == 1) {
-            return gradeToInt(grade) * hours
-        }
-        else {
-            return 0
+        return if (grade.checkValidGrade() == 1) {
+            gradeToInt(grade.letterGrade) * grade.hours
+        } else {
+            0
         }
     }
 
     // Helper function to check for invalid grades
-    private fun checkValidInput(grade: String, hours: Int): Boolean {
+    private fun checkValidInput(grade: Grade): Boolean {
         // Check if the grade is invalid
-        if (checkValidGrade(grade) == -1) {
+        if (grade.checkValidGrade() == -1) {
             Toast.makeText(this, "Invalid grade!", Toast.LENGTH_SHORT).show()
             return false
         }
         // Check if a grade has been provided without credit hours
-        else if (checkValidGrade(grade) == 1 && hours == 0) {
+        else if (grade.checkValidGrade() == 1 && grade.hours == 0) {
             Toast.makeText(this, "A grade was entered without any credit hours!", Toast.LENGTH_SHORT).show()
             return false
         }
         // Check if credit hours have been provided without a grade
-        else if (checkValidGrade(grade) == 0 && hours > 0) {
+        else if (grade.checkValidGrade() == 0 && grade.hours > 0) {
             Toast.makeText(this, "Credit hours were entered without a corresponding grade!", Toast.LENGTH_SHORT).show()
             return false
         }
         // Check for negative credit hours
-        else if (hours < 0) {
+        else if (grade.hours < 0) {
             Toast.makeText(this, "Cannot enter negative credit hours!", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -124,6 +116,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Helper function to make sure at least one grade is entered
+    private fun checkIfBlank(grades: Array<Grade>): Boolean {
+        for (grade in grades) {
+            if (grade.letterGrade != "") {
+                return false
+            }
+        }
+        return true
+    }
 
     fun calculateGPA(view: View) {
         // Get the values provided by the user
@@ -148,36 +149,38 @@ class MainActivity : AppCompatActivity() {
         val gradeFourHours = gradeFourHoursStr.toIntOrNull() ?: 0
         val gradeFiveHours = gradeFiveHoursStr.toIntOrNull() ?: 0
 
+        // Array to store the grades
+        val gradeArray: Array<Grade> = arrayOf(
+            Grade(gradeOneGradeStr, gradeOneHours),
+            Grade(gradeTwoGradeStr, gradeTwoHours),
+            Grade(gradeThreeGradeStr, gradeThreeHours),
+            Grade(gradeFourGradeStr, gradeFourHours),
+            Grade(gradeFiveGradeStr, gradeFiveHours)
+        )
+
         // count the number of hours taken and the value of the credit
         var sumHours = 0
         var sumCreditValue = 0
 
         // Check if each input is valid. Allow empty EditText boxes only if the paired box is also empty
-        if ((checkValidInput(gradeOneGradeStr, gradeOneHours))
-            && checkValidInput(gradeTwoGradeStr, gradeTwoHours)
-            && checkValidInput(gradeThreeGradeStr, gradeThreeHours)
-            && checkValidInput(gradeFourGradeStr, gradeFourHours)
-            && checkValidInput(gradeFiveGradeStr, gradeFiveHours)) {
+        if ((checkValidInput(gradeArray[0]))
+            && checkValidInput(gradeArray[1])
+            && checkValidInput(gradeArray[2])
+            && checkValidInput(gradeArray[3])
+            && checkValidInput(gradeArray[4])
+            && !checkIfBlank(gradeArray)) {
 
-            // Grade 1
-            sumHours += sumCreditHours(gradeOneGradeStr, gradeOneHours)
-            sumCreditValue += sumGradeValues(gradeOneGradeStr, gradeOneHours)
-            // Grade 2
-            sumHours += sumCreditHours(gradeTwoGradeStr, gradeTwoHours)
-            sumCreditValue += sumGradeValues(gradeTwoGradeStr, gradeTwoHours)
-            // Grade 3
-            sumHours += sumCreditHours(gradeThreeGradeStr, gradeThreeHours)
-            sumCreditValue += sumGradeValues(gradeThreeGradeStr, gradeThreeHours)
-            // Grade 4
-            sumHours += sumCreditHours(gradeFourGradeStr, gradeFourHours)
-            sumCreditValue += sumGradeValues(gradeFourGradeStr, gradeFourHours)
-            // grade 5
-            sumHours += sumCreditHours(gradeFiveGradeStr, gradeFiveHours)
-            sumCreditValue += sumGradeValues(gradeFiveGradeStr, gradeFiveHours)
+            for (grade in gradeArray)
+            {
+                sumHours += sumCreditHours(grade)
+                sumCreditValue += sumGradeValues(grade)
+            }
 
             // Calculate the GPA
-            val GPA: String = String.format("%.2f", sumCreditValue.toFloat() / sumHours.toFloat())
-            GPATextView.text = GPA
+            GPATextView.text = String.format("%.2f", sumCreditValue.toFloat() / sumHours.toFloat())
+        }
+        else {
+            GPATextView.text = ""
         }
 
 

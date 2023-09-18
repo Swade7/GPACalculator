@@ -182,11 +182,5 @@ class MainActivity : AppCompatActivity() {
         else {
             GPATextView.text = ""
         }
-
-
-
     }
-
-
-
 }

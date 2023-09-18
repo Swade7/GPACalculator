@@ -277,11 +277,22 @@
         tools:context="com.zybooks.gpacalculator.MainActivity">
 
         <TextView
-            android:id="@+id/GPAResult"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/GPALabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110sp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/gpalabel"
             android:layout_marginTop="10dp"
-            android:text="0"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/GPAResult"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=""
             android:textAlignment="center"
             android:textSize="32sp"
             android:textStyle="bold" />

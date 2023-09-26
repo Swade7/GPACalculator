@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/GPACalculatorTitle"
         android:layout_width="279dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="64dp"
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/CalculatorInstructionsText"
         android:layout_width="281dp"
-        android:layout_height="77dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:text="@string/calculator_instructions"
